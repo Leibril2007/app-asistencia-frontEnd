@@ -1,0 +1,50 @@
+.form-hecho{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 23rem 5.6rem 1fr 1fr;
+
+    padding: 7.5rem;
+}
+
+.img-ok{
+    width: 100%;
+    max-width: 20rem;
+    height: 28rem;
+
+    align-self: start;
+    justify-self: center;
+}
+
+.msj-hecho{
+    align-self: center;
+    justify-self: center;
+
+    font-size: 2rem;
+    color: rgb(124, 160, 8);
+}
+
+.reg-login{
+    align-self: center;
+    justify-self: center;
+    background-color: #48D1CC;
+
+    width: 100%;
+    max-width: 29rem;
+    height: 2.6rem;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.reg-login:hover{
+    transition: background 5s ease;
+
+    background: #ffe259;
+    background: -webkit-linear-gradient(to right, #ffa751, #ffe259); 
+    background: linear-gradient(to right, #ffa751, #ffe259); 
+}

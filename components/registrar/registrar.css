@@ -1,0 +1,45 @@
+.tit-reg{
+    align-self: center;
+    justify-self: center;
+
+    font-size: 2.5rem; 
+    color: #FFE946; 
+    text-shadow: -1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000, 1px -1px 0 #000000;
+}
+
+.form-reg{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+}
+
+.inputs{
+    align-self: center;
+    justify-self: center;
+}
+
+.btn-registro{
+    background-color: #48D1CC;
+    color: white;
+
+    align-self: center;
+    justify-self: center;
+}
+.btn-registro:hover{
+    background: #acb6e5;  
+    background: -webkit-linear-gradient(to right, #86fde8, #acb6e5);  
+    background: linear-gradient(to right, #86fde8, #acb6e5); 
+    
+    transition: 5s;   
+}
+.btn-volver{
+    color: #DDAE05;
+
+    align-self: start;
+    justify-self: center;
+}
+.btn-volver:hover{
+    color: #d3891a;
+    transition: 0.2s;
+}
+

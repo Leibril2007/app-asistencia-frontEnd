@@ -1,3 +1,5 @@
+import { cargarRegistro } from "../registrar/registrar.js";
+
 function cargarLogin(){
 
     let secLogin = document.createElement('section');
@@ -5,7 +7,7 @@ function cargarLogin(){
 
     /* B FORM */    
     let formLogin = document.createElement('form');
-    formLogin.className = "form-login";
+    formLogin.className = "forms form-login";
 
     /* BANNER */
 
@@ -46,13 +48,13 @@ function cargarLogin(){
 
     /* INPUTS */
     let inputUserEmail = document.createElement('input');
-    inputUserEmail.className = "inputLogin inp-u-e";
+    inputUserEmail.className = "inputs inp-u-e";
     inputUserEmail.placeholder = "Usuario/Email";
     formLogin.appendChild(inputUserEmail);
 
 
     let inputPass = document.createElement('input');
-    inputPass.className = "inputLogin inp-pass";
+    inputPass.className = "inputs inp-pass";
     inputPass.placeholder = "Password";
     inputPass.type = "password";
     formLogin.appendChild(inputPass);
@@ -61,14 +63,26 @@ function cargarLogin(){
     /* BTN LOGIN */
 
     let btnLogin = document.createElement('div');
-    btnLogin.className = "btn-login";
-    btnLogin.textContent = "Login";
+    btnLogin.className = "btnsGlobal btn-login";
+    btnLogin.textContent = "Ingresar";
     formLogin.appendChild(btnLogin);
 
-    let btnRegistrate = document.createElement('div');
-    btnRegistrate.className = "btn-registrate";
-    btnRegistrate.textContent = "Registrate";
-    formLogin.appendChild(btnRegistrate);    
+    let btnRegistrate = document.createElement('div'); 
+    btnRegistrate.className = "btnsGlobal btn-registrate";
+    btnRegistrate.textContent = "Registrar";   
+
+    btnRegistrate.addEventListener("click", () =>{
+
+        if(!secLogin.classList.contains("ocultar")){
+            secLogin.classList.add("ocultar");
+
+            let añadirDOM = document.querySelector("#root");
+            añadirDOM.appendChild(cargarRegistro());
+        }
+        
+    })
+
+    formLogin.appendChild(btnRegistrate); 
 
 
 
