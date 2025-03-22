@@ -65,6 +65,19 @@ function cargarLogin(){
     let btnLogin = document.createElement('div');
     btnLogin.className = "btnsGlobal btn-login";
     btnLogin.textContent = "Ingresar";
+
+    btnLogin.addEventListener("click", ()=>{
+
+        if(!secLogin.classList.contains("ocultar")){
+            secLogin.classList.add("ocultar");
+
+            let añadirDOM = document.querySelector("#root");
+            añadirDOM.appendChild(cargarRegistro());
+        }
+
+    })
+
+
     formLogin.appendChild(btnLogin);
 
     let btnRegistrate = document.createElement('div'); 
