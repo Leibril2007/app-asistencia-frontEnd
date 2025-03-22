@@ -3,17 +3,24 @@
     width: 100%;
     height: 100vh;
     padding: 5rem;
-    background-color: #03b9bc;
+
+    background: #36D1DC; 
+    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC); 
+    background: linear-gradient(to right, #5B86E5, #36D1DC);
 }
-.form-login{
+
+.forms{
     background-color: rgb(255, 255, 255);
- 
+
     max-width: 40rem;
     margin: auto;
     height: 100%;
     max-height: 58rem;
     box-shadow: 0px 11px 20px 6px #059b9d;
+    border-radius: 5rem;
+}
 
+.form-login{
     display: grid;
     grid-template-rows: auto 6rem 3.7rem repeat(4, 1fr);
     grid-template-columns: 1fr;
@@ -31,6 +38,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    border-top-right-radius: 5rem;
+    border-top-left-radius: 5rem;
 }
 .d-log-login{
     grid-row: 1/2;
@@ -76,7 +86,7 @@
     justify-self: center;
 }
 
-.inputLogin{
+.inputs{
     width: 100%;
     max-width: 29rem;
     height: 3.5rem;
@@ -85,33 +95,59 @@
     font-family: "Lemon", serif;
     color: #3d7595;
 
-    align-self: center;
-    justify-self: center;
-    border: none;
+    border: 3px solid #B6DDFF;
     outline: none;
     background-color: #B6DDFF;
 }
-.inputLogin::placeholder{
+.inputs::placeholder{
     color: #4d7ba7;
     font-family: "Lemon", serif;
     font-size: 1.1rem;
 }
 
-.btn-login{
+.inputs:focus,
+.inputs:hover{
+    border: 3px solid rgb(9, 140, 192);
+    transition: 0.2s;
+}
+
+
+.inp-u-e{
+    align-self: center;
+    justify-self: center;
+}
+
+.inp-pass{
+    align-self: center;
+    justify-self: center;
+}
+
+.btnsGlobal{
     width: 100%;
     max-width: 29rem;
     font-size: 1.3rem;
-    background-color: #48D1CC;
-    color: white;
     height: 2.6rem;
     cursor: pointer;
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.btn-login{
+    background-color: #48D1CC;
+    color: white;
 
     align-self: center;
     justify-self: center;
+}
+
+.btn-login:hover{
+    background: #acb6e5;  
+    background: -webkit-linear-gradient(to right, #86fde8, #acb6e5);  
+    background: linear-gradient(to right, #86fde8, #acb6e5); 
+    
+    transition: 5s;   
 }
 
 .btn-registrate{
@@ -119,6 +155,8 @@
     justify-self: center;
 
     color: #DDAE05;
-    font-size: 1.3rem;
-    cursor: pointer;
+}
+.btn-registrate:hover{
+    color: #d3891a;
+    transition: 0.2s;
 }
