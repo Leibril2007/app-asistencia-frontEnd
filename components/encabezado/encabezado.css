@@ -1,0 +1,125 @@
+.header{
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10.5rem 1fr;
+    gap: 0.2rem;
+}
+
+.banner-pag-app{
+    grid-row: 1/2;
+    width: 100%;
+
+    background: #acb6e5;  
+    background: -webkit-linear-gradient(to right, #86fde8, #acb6e5);  
+    background: linear-gradient(to right, #86fde8, #acb6e5); 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.tit-app{
+    font-size: 3rem; 
+    color: #FFE946; 
+    text-shadow: -1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000, 1px -1px 0 #000000;
+}
+
+.d-log-b{
+    max-width: 8.5rem;
+    height: 8.5rem;
+    background-color: #fcac34;
+    border-radius: 10rem;
+    padding: 1rem;
+    border: 1px solid #ba7308;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-log-b{
+    width: 100%;
+    height: 100%;
+}
+
+
+.nav-pag{
+    grid-row: 2/3;
+    padding: 0rem 2rem;
+    width: 100%;
+
+    background: #ffe259;
+    background: -webkit-linear-gradient(to right, #ffa751, #ffe259); 
+    background: linear-gradient(to right, #ffa751, #ffe259);
+
+    display: grid;
+    grid-template-columns: 8rem auto 10rem auto 19rem auto auto;
+    align-items: center;
+    gap: 1.5rem;
+    
+}
+
+.titulosNav{
+    font-size: 1.6rem;
+    color: rgb(105, 58, 5);
+    text-align: end;
+}
+.tit-user-n{
+    grid-column: 1/2;
+}
+.user-nav{
+    grid-column: 2/3;
+}
+.tit-email-n{
+    grid-column: 3/4;
+}
+.email-nav{
+    grid-column: 4/5;
+}
+
+.datosUENav{
+    font-size: 1.3rem;
+}
+
+.select{
+    grid-column: 5/6;
+    border: none;
+    background: transparent;
+    outline: none;
+    appearance: none;
+
+    border-radius: 3px;
+    color: rgb(8, 67, 167);
+
+    width: 100%;
+    cursor: pointer;
+    padding: 1rem;
+    text-align: center;
+
+    font-size: 1.6rem;
+    font-family: "Lemon", serif;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.select:hover{
+    transition: 0.2s;
+    background-color: #ff9500;
+    color: aliceblue;
+}
+
+.fecha-inp{
+    border: 1px solid rgb(134, 86, 34);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-family: "Lemon", serif;
+    font-size: 1.3rem;
+    outline: none;
+    color: rgb(134, 86, 34);
+    background: #F7971E;  
+    background: -webkit-linear-gradient(to right, #FFD200, #F7971E); 
+    background: linear-gradient(to right, #FFD200, #F7971E); 
+    
+}

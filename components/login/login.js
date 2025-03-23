@@ -1,4 +1,5 @@
 import { cargarRegistro } from "../registrar/registrar.js";
+import { cargarDOM } from "../../index.js";
 
 function cargarLogin(){
 
@@ -70,9 +71,7 @@ function cargarLogin(){
 
         if(!secLogin.classList.contains("ocultar")){
             secLogin.classList.add("ocultar");
-
-            let añadirDOM = document.querySelector("#root");
-            añadirDOM.appendChild(cargarRegistro());
+            cargarDOM();
         }
 
     })
