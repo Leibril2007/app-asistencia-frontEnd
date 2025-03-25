@@ -1,4 +1,21 @@
-function cargarEncabezado(){
+import { cargarTablero } from "../tablero/tablero.js";
+import { camposGrados } from "../tablero/consultas.js";
+
+function consultarGrados(){
+    fetch('http://localhost:3000/grados') 
+    .then(response => response.json())
+    .then(data => cargarEncabezadoDOM(data))
+    .catch(error => console.error('Error:', error));
+
+}
+
+function cargarEncabezadoDOM(data){
+    let DOM = document.querySelector('#root');
+    DOM.appendChild(cargarEncabezado(data));    
+}
+
+
+function cargarEncabezado(dataGrados){
 
     let header = document.createElement('header');
     header.className = "header";
@@ -23,7 +40,8 @@ function cargarEncabezado(){
 
     header.appendChild(bannerPagAp);
 
-    /* MENU */
+    
+    /* ---------------------- */
     let navPag = document.createElement('nav');
     navPag.className = "nav-pag";
 
@@ -53,15 +71,61 @@ function cargarEncabezado(){
     let selectGrados = document.createElement('select');
     selectGrados.className = "select";
 
-    let opciones = ["Grados", "Bachillerato", "Kinder", "primero primaria"];
-    opciones.forEach(grado => {
+    let defaultOption = document.createElement('option');
+    defaultOption.textContent = "Grados";
+    defaultOption.value = "";
+    selectGrados.appendChild(defaultOption);
+
+    console.log(dataGrados);
+    dataGrados.forEach((grado) => {
         let option = document.createElement('option');
         option.className = "select-options";
-        option.textContent = grado;
-        option.value = grado.toLowerCase();
+        option.textContent = grado.nombre;
+        option.value = grado.id;
         selectGrados.appendChild(option);
     });
+
+    let gradoPrevioSel = null;
+
+    selectGrados.addEventListener('change', async function(event) {
+
+        const selectedOption = Number(event.target.value);
+        console.log("sss",selectedOption);
+
+        const campGrados = await camposGrados();
+
+        const gradosComparacion = campGrados.find(grados => grados.id === selectedOption);
+
+
+        console.log(gradosComparacion);
+
+        if (gradosComparacion) {
+
+            let añadirDom = document.querySelector("#root");
+
+            let tableroAnterior = document.querySelector(".sec-tab-dom");
+
+            if (tableroAnterior){
+                tableroAnterior.remove();
+            }
+
+            let secTableroDom = document.createElement('div');
+            secTableroDom.className = "sec-tab-dom";
+            secTableroDom.appendChild(cargarTablero(gradosComparacion.nombre));
+            añadirDom.appendChild(secTableroDom);
+
+            gradoPrevioSel = gradosComparacion;
+
+            if(gradoPrevioSel != null){
+                gradoPrevioSel = null;
+                tableroAnterior.classList.add("ocultar");
+            }
+        
+        } 
+
+    });
     
+
 
     navPag.appendChild(selectGrados);
 
@@ -77,13 +141,13 @@ function cargarEncabezado(){
     fechaInp.type = "date";
     navPag.appendChild(fechaInp);
 
-
-
-
     header.appendChild(navPag);
+
 
     return header;
 
 }
 
-export { cargarEncabezado }
+
+
+export { consultarGrados }

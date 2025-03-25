@@ -1,12 +1,12 @@
 import { cargarLogin } from "./components/login/login.js";
-import { cargarEncabezado } from "./components/encabezado/encabezado.js";
+import { consultarGrados } from "./components/encabezado/encabezado.js";
+
 
 let DOM = document.querySelector("#root");
 
 function cargarDOM(){
 
-    DOM.appendChild(cargarEncabezado());
-
+    consultarGrados();
 }
 
 DOM.appendChild(cargarLogin());
