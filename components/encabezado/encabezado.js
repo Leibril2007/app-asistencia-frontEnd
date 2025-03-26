@@ -1,21 +1,24 @@
 import { cargarTablero } from "../tablero/tablero.js";
 import { camposGrados } from "../tablero/consultas.js";
+import { consultarAlumnos } from "../tablero/consultas.js";
+import { gradosBackend } from "../tablero/consultas.js";
 
-function consultarGrados(){
+
+function consultarGrados(maestros, email){
     fetch('http://localhost:3000/grados') 
     .then(response => response.json())
-    .then(data => cargarEncabezadoDOM(data))
+    .then(data => cargarEncabezadoDOM(data, maestros, email))
     .catch(error => console.error('Error:', error));
 
 }
 
-function cargarEncabezadoDOM(data){
+function cargarEncabezadoDOM(data, maestros, email){
     let DOM = document.querySelector('#root');
-    DOM.appendChild(cargarEncabezado(data));    
+    DOM.appendChild(cargarEncabezado(data, maestros, email));    
 }
 
 
-function cargarEncabezado(dataGrados){
+function cargarEncabezado(dataGrados, maestros, email){
 
     let header = document.createElement('header');
     header.className = "header";
@@ -52,7 +55,7 @@ function cargarEncabezado(dataGrados){
 
     let userNav = document.createElement('h3');
     userNav.className = "datosUENav user-nav";
-    userNav.textContent = "Usuario base de datos";
+    userNav.textContent = maestros; 
     navPag.appendChild(userNav);
 
     let titEmailNav = document.createElement('h2');
@@ -62,7 +65,7 @@ function cargarEncabezado(dataGrados){
 
     let emailNav = document.createElement('h3');
     emailNav.className = "datosUENav email-nav";
-    emailNav.textContent = "correo base de datos";
+    emailNav.textContent = email;
     navPag.appendChild(emailNav);
 
 
@@ -99,29 +102,40 @@ function cargarEncabezado(dataGrados){
 
         console.log(gradosComparacion);
 
-        if (gradosComparacion) {
 
-            let añadirDom = document.querySelector("#root");
+        const datosAlumnos = await consultarAlumnos();
 
-            let tableroAnterior = document.querySelector(".sec-tab-dom");
 
-            if (tableroAnterior){
-                tableroAnterior.remove();
-            }
-
-            let secTableroDom = document.createElement('div');
-            secTableroDom.className = "sec-tab-dom";
-            secTableroDom.appendChild(cargarTablero(gradosComparacion.nombre));
-            añadirDom.appendChild(secTableroDom);
-
-            gradoPrevioSel = gradosComparacion;
-
-            if(gradoPrevioSel != null){
-                gradoPrevioSel = null;
-                tableroAnterior.classList.add("ocultar");
-            }
         
-        } 
+        for (let i = 0; i < datosAlumnos.length; i++) {
+            if (datosAlumnos[i].grados_id === gradosComparacion.id) {
+              
+                let alumnoGRadoId = datosAlumnos[i].grados_id;
+
+
+            if (gradosComparacion) {
+
+                let añadirDom = document.querySelector("#root");
+
+                let tableroAnterior = document.querySelector(".sec-tab-dom");
+
+                if (tableroAnterior){
+                    tableroAnterior.remove();
+                }
+
+                let secTableroDom = document.createElement('div');
+                secTableroDom.className = "sec-tab-dom";
+                secTableroDom.appendChild(cargarTablero(gradosComparacion.nombre, gradosComparacion.id, alumnoGRadoId ));
+                añadirDom.appendChild(secTableroDom);
+
+                gradoPrevioSel = gradosComparacion;
+            
+            } 
+
+        break;  
+
+    }
+}
 
     });
     

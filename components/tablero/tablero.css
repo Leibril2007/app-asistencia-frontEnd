@@ -51,7 +51,14 @@
     align-items: center;
     text-align: start;
 }
+.clave-alumno{
+    grid-column: 1/2;
+    grid-row: 1/2;
+
+    text-align: center;
+}
 .nombre-alumno{
+    grid-column: 2/3;
     grid-row: 1/2;
 }
 .base-inputs{

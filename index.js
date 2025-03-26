@@ -4,9 +4,9 @@ import { consultarGrados } from "./components/encabezado/encabezado.js";
 
 let DOM = document.querySelector("#root");
 
-function cargarDOM(){
+function cargarDOM(maestros, email){
 
-    consultarGrados();
+    consultarGrados(maestros, email);
 }
 
 DOM.appendChild(cargarLogin());

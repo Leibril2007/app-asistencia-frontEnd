@@ -1,12 +1,16 @@
-
 function cadaAlumno(data){
     
     let divBase = document.createElement('div');
     divBase.className = "c-alumno";
 
+    let clave = document.createElement('p');
+    clave.className = "clave-alumno";
+    clave.textContent = data.clave;
+    divBase.appendChild(clave);
+
     let alumno = document.createElement('p');
     alumno.className = "nombre-alumno";
-    alumno.textContent = data;
+    alumno.textContent = data.nombre;
 
     let baseInputs = document.createElement('div');
     baseInputs.className = "base-inputs";
@@ -30,6 +34,7 @@ function cadaAlumno(data){
     divBase.appendChild(baseInputs);
 
     divBase.appendChild(alumno);
+    
 
 
     return divBase;

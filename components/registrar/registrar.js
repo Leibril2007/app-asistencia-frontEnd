@@ -1,4 +1,5 @@
 import { cargarLogin } from "../login/login.js";
+import { agregarMaestro } from "./funcionRegistro.js";
 import { cargarHecho } from "./ventanaHecho.js";
 
 function cargarRegistro(){
@@ -53,6 +54,8 @@ function cargarRegistro(){
     btnRegistrar.textContent = "Registrar";
 
     btnRegistrar.addEventListener("click", ()=>{
+
+        agregarMaestro();
 
         if(!secRegistro.classList.contains("ocultar")){
             secRegistro.classList.add("ocultar");
