@@ -1,0 +1,19 @@
+@media (max-width: 835px) {
+
+    .form-hecho{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 17rem 8rem 9rem;
+    
+        padding: 7.5rem;
+    }
+
+    .img-ok{
+        max-width: 23rem;
+        height: 20rem;
+    }
+    .msj-hecho{    
+        font-size: 2rem;
+        color: rgb(124, 160, 8);
+    }
+}

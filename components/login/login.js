@@ -1,5 +1,6 @@
 import { cargarRegistro } from "../registrar/registrar.js";
 import { cargarDOM } from "../../index.js";
+import { consultarMaestos } from "../tablero/consultas.js";
 
 function cargarLogin(){
 
@@ -67,15 +68,43 @@ function cargarLogin(){
     btnLogin.className = "btnsGlobal btn-login";
     btnLogin.textContent = "Ingresar";
 
-    btnLogin.addEventListener("click", ()=>{
+    btnLogin.addEventListener("click", async ()=>{
 
-        if(!secLogin.classList.contains("ocultar")){
-            secLogin.classList.add("ocultar");
-            cargarDOM();
-        }
+        let datosMaestros = await consultarMaestos();
+
+        const nombreOemail = inputUserEmail.value;
+        const pass = inputPass.value;
+
+        let maestros = datosMaestros.find(maestros => maestros.nombre === nombreOemail || maestros.email === nombreOemail);
+
+        if(maestros){
+
+            if( maestros.password === pass ){
+
+                cargarDOM(maestros.nombre, maestros.email);
+
+                if(!secLogin.classList.contains("ocultar")){
+                    secLogin.classList.add("ocultar");
+                }
+
+            } else {
+                let errorPass = document.createElement('p');
+                errorPass.className = "error eContraseña";
+                errorPass.textContent = "Contraseña incorrecta";
+
+                formLogin.appendChild(errorPass);
+            }
+
+        }else{
+
+            let errorPass = document.createElement('p');
+            errorPass.textContent = "Usuario o contraseña incorrectos";
+            errorPass.className = "error";
+            formLogin.appendChild(errorPass);
+
+        }     
 
     })
-
 
     formLogin.appendChild(btnLogin);
 
