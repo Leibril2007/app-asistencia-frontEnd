@@ -1,8 +1,9 @@
 import { cargarTablero } from "../tablero/tablero.js";
 import { camposGrados } from "../tablero/consultas.js";
 import { consultarAlumnos } from "../tablero/consultas.js";
-import { gradosBackend } from "../tablero/consultas.js";
+import { idMaestro, idAlumno,recAsistencia, recObs } from "../login/login.js";
 
+import { agregarDatos } from "../tablero/funcionAsistencia.js";
 
 function consultarGrados(maestros, email){
     fetch('http://localhost:3000/grados') 
@@ -79,7 +80,6 @@ function cargarEncabezado(dataGrados, maestros, email){
     defaultOption.value = "";
     selectGrados.appendChild(defaultOption);
 
-    console.log(dataGrados);
     dataGrados.forEach((grado) => {
         let option = document.createElement('option');
         option.className = "select-options";
@@ -92,18 +92,15 @@ function cargarEncabezado(dataGrados, maestros, email){
 
     selectGrados.addEventListener('change', async function(event) {
 
-        const selectedOption = Number(event.target.value);
-        console.log("sss",selectedOption);
+        let selectedOption = Number(event.target.value);
 
-        const campGrados = await camposGrados();
+        let campGrados = await camposGrados();
 
-        const gradosComparacion = campGrados.find(grados => grados.id === selectedOption);
-
-
-        console.log(gradosComparacion);
+        let gradosComparacion = campGrados.find(grados => grados.id === selectedOption);
 
 
-        const datosAlumnos = await consultarAlumnos();
+
+        let datosAlumnos = await consultarAlumnos();
 
 
         
@@ -115,6 +112,8 @@ function cargarEncabezado(dataGrados, maestros, email){
 
             if (gradosComparacion) {
 
+                /* agregarDatos(idMaestro, gradosComparacion.id, alumnoGRadoId, recAsistencia, recObs); */
+
                 let añadirDom = document.querySelector("#root");
 
                 let tableroAnterior = document.querySelector(".sec-tab-dom");
@@ -123,12 +122,16 @@ function cargarEncabezado(dataGrados, maestros, email){
                     tableroAnterior.remove();
                 }
 
+
                 let secTableroDom = document.createElement('div');
                 secTableroDom.className = "sec-tab-dom";
                 secTableroDom.appendChild(cargarTablero(gradosComparacion.nombre, gradosComparacion.id, alumnoGRadoId ));
+
+
                 añadirDom.appendChild(secTableroDom);
 
                 gradoPrevioSel = gradosComparacion;
+
             
             } 
 
@@ -154,6 +157,14 @@ function cargarEncabezado(dataGrados, maestros, email){
     fechaInp.className = "fecha-inp";
     fechaInp.type = "date";
     navPag.appendChild(fechaInp);
+
+    fechaInp.addEventListener('change', () => {
+        let fecha = fechaInp.value;
+        console.log("Fecha seleccionada:", fecha);
+        
+/*         agregarDatos(idMaestro, idAlumno, recAsistencia, recObs); */
+
+      });
 
     header.appendChild(navPag);
 

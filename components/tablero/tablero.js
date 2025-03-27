@@ -1,5 +1,7 @@
 import {gradosBackend } from "./consultas.js";
 import { cadaAlumno } from "./itemAlumnos.js";
+import { idMaestro, idGrado, idAlumno, recFecha,recAsistencia, recObs } from "../login/login.js";
+import { agregarDatos } from "./funcionAsistencia.js";
 
 
 function cargarTablero(grados, gradoId, alumnoGId){
@@ -41,18 +43,21 @@ function cargarTablero(grados, gradoId, alumnoGId){
 
 
     if ( gradoId === alumnoGId ){
-        console.log("verdadero");
 
-        var idGradoSel = gradoId;
+        let idGradoSel = gradoId;
+
+        agregarDatos(idMaestro, idGradoSel, idAlumno, recFecha,recAsistencia, recObs);
 
 
         gradosBackend(idGradoSel)
         .then(data => {
         
           data.forEach(cAlumno => {
-            divAlumno.appendChild(cadaAlumno(cAlumno));
+            divAlumno.appendChild(cadaAlumno(cAlumno, idGradoSel));
           });
         })
+
+        //MANDAR GRADOS ID
 
       
     }else{

@@ -2,6 +2,16 @@ import { cargarRegistro } from "../registrar/registrar.js";
 import { cargarDOM } from "../../index.js";
 import { consultarMaestos } from "../tablero/consultas.js";
 
+export let idMaestro;
+export let idGrado; 
+export let idAlumno; 
+export let recFecha;
+export let recAsistencia; 
+export let recObs;
+
+import { agregarDatos } from "../tablero/funcionAsistencia.js";
+
+
 function cargarLogin(){
 
     let secLogin = document.createElement('section');
@@ -72,8 +82,8 @@ function cargarLogin(){
 
         let datosMaestros = await consultarMaestos();
 
-        const nombreOemail = inputUserEmail.value;
-        const pass = inputPass.value;
+        let nombreOemail = inputUserEmail.value;
+        let pass = inputPass.value;
 
         let maestros = datosMaestros.find(maestros => maestros.nombre === nombreOemail || maestros.email === nombreOemail);
 
@@ -83,9 +93,18 @@ function cargarLogin(){
 
                 cargarDOM(maestros.nombre, maestros.email);
 
+
                 if(!secLogin.classList.contains("ocultar")){
                     secLogin.classList.add("ocultar");
                 }
+
+                /* MANDAR MAESTRO */
+
+                idMaestro =  maestros.id;
+                console.log("maestro", idMaestro);
+
+                agregarDatos(idMaestro, idGrado, idAlumno, recFecha,recAsistencia, recObs);
+
 
             } else {
                 let errorPass = document.createElement('p');

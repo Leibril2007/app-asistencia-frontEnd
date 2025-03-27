@@ -32,21 +32,32 @@
 }
 .titsEGenerales{
     font-size: 1.6rem;
+    color: rgb(81, 63, 4);
 }
 
 
 .c-alumno{ 
     max-width: 100%;
     margin-bottom: 1rem;
-    margin-top: 1rem;
-    height: 5rem;
+    margin-top: 2rem;
+    /* height: 5rem; */
     padding: 1rem 1.5rem;
-    background-color: #e7e0a1;
+
+
+    background: #ECE9E6; 
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6); 
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
+    
+    border: 1px solid rgb(171, 171, 171);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+
     border-radius: 2.5rem;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr auto auto;
+    gap: 1rem;
 
     align-items: center;
     text-align: start;
@@ -56,10 +67,16 @@
     grid-row: 1/2;
 
     text-align: center;
+    font-size: 1.3rem;
+    color: rgb(98, 82, 28);
 }
 .nombre-alumno{
     grid-column: 2/3;
     grid-row: 1/2;
+
+    font-size: 1.3rem;
+    color: rgb(98, 82, 28);
+
 }
 .base-inputs{
     justify-content: center;
@@ -69,4 +86,81 @@
     gap: 1rem;
 
     font-size: 1.5rem;
+}
+
+.inp-check{
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.tit-obs{
+    color: rgb(98, 82, 28);
+    grid-column: 1/2;
+    grid-row: 2/3;
+
+    text-align: center;
+    font-size: 1.3rem;
+}
+.tit-si-no{
+    color: rgb(98, 82, 28);
+}
+
+.textA-Obs{
+    grid-column: 2/4;
+    grid-row: 2/3;
+
+    width: 100%;
+    max-width: 55rem;
+    height: 3.5rem;
+
+    border-radius: 0.5rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgb(188, 188, 188);
+}
+
+.textA-Obs:focus {
+    outline: none;
+    border-color: rgb(50, 150, 190);
+    box-shadow: 0px 0px 8px rgba(167, 233, 247, 0.6);
+}
+
+
+
+
+
+.btn-guardar{
+    grid-row: 3/4;
+    grid-column: 1/2;
+    margin-top: 1.8rem;
+    background-color: #48D1CC;
+    color: white;
+    width: 100%;
+    max-width: 20rem;
+    padding: 1.5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    align-self: center;
+    justify-self: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-guardar:hover{
+    background: #acb6e5;  
+    background: -webkit-linear-gradient(to right, #86fde8, #acb6e5);  
+    background: linear-gradient(to right, #86fde8, #acb6e5); 
+    
+    transition: 5s;  
+}
+.msj-hecho-alum{
+    grid-row: 3/4;
+    grid-column: 2/4;   
+    
+    text-align: start;
+    font-size: 1.5rem;
+    color: rgb(124, 160, 8);
 }
