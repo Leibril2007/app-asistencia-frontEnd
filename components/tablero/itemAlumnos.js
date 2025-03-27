@@ -1,4 +1,7 @@
-function cadaAlumno(data){
+import { agregarDatos } from "./funcionAsistencia.js";
+import { idMaestro, idGrado, idAlumno, recAsistencia, recObs, recFecha } from "../login/login.js";
+
+function cadaAlumno(data, idGradoSel){
     
     let divBase = document.createElement('div');
     divBase.className = "c-alumno";
@@ -12,26 +15,93 @@ function cadaAlumno(data){
     alumno.className = "nombre-alumno";
     alumno.textContent = data.nombre;
 
+
     let baseInputs = document.createElement('div');
     baseInputs.className = "base-inputs";
 
+    /* CHECKBOX */
+
     let pSi = document.createElement('p');
+    pSi.className = "tit-si-no";
     pSi.textContent = "Si";
     baseInputs.appendChild(pSi);
 
     let inpSi = document.createElement('input');
+    inpSi.className = "inp-check check-si";
     inpSi.type = 'checkbox';
     baseInputs.appendChild(inpSi);
 
     let pNo = document.createElement('p');
+    pNo.className = "tit-si-no";
     pNo.textContent = "No";
     baseInputs.appendChild(pNo);
-
+    
     let inpNo = document.createElement('input');
+    inpNo.className = "inp-check check-no";
     inpNo.type = 'checkbox';
+    
     baseInputs.appendChild(inpNo);
 
+
+
+
+
+    /* OBSERVACIONES */
+
+    let titObs = document.createElement('p');
+    titObs.className = "tit-obs";
+    titObs.textContent = "Observaciones:";
+    divBase.appendChild(titObs);
+
+
+
+    //MANDAR OBSERVACIONES
+    let textAObs = document.createElement('textarea');
+    textAObs.className = "textA-Obs";
+    divBase.appendChild(textAObs);
+
+
+
+    let btnGuardar = document.createElement('div');
+    btnGuardar.className = "btn-guardar";
+    btnGuardar.textContent = "Guardar";
+
+    divBase.appendChild(btnGuardar);
+
+
+
+    btnGuardar.addEventListener("click", function() {
+        let recFecha = document.querySelector('.fecha-inp').value;
+        console.log("fecha verificar", recFecha);
+        let recObs = document.querySelector('.textA-Obs').value;
+    
+        let checkBoxSi = inpSi;
+        let checkBoxNo = inpNo;
+    
+        let valorCheck = null;
+    
+        if (checkBoxSi.checked) {
+            valorCheck = true;  
+            console.log("valor", valorCheck);
+        } else if (checkBoxNo.checked) {
+            valorCheck = false; 
+            console.log("valor no", valorCheck);
+        }
+    
+        
+        agregarDatos(idMaestro, idGradoSel, data.id, recFecha, valorCheck, recObs);
+
+        let msjHecho = document.createElement('p');
+        msjHecho.className = "msj-hecho-alum";
+        msjHecho.textContent = "Guardado con éxito";
+        divBase.appendChild(msjHecho);
+
+    });
+           
+
+
     divBase.appendChild(baseInputs);
+    
 
     divBase.appendChild(alumno);
     

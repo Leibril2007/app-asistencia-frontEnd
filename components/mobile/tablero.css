@@ -1,5 +1,58 @@
 @media (max-width: 835px) {
     .titsEGenerales{
+        font-size: 1.4rem;
+        font-weight: 100;
+    }
+
+    .nombre-alumno{
+        grid-column: 2/3;
+        grid-row: 1/2;
+    
+        font-size: 1.4rem;
+    }
+
+    .btn-guardar{
+        align-self: center;
+        justify-self: center;
+    }
+
+    .tit-obs{
+        grid-column: 1/2;
+        grid-row: 2/3;
+    
+        text-align: center;
         font-size: 1rem;
     }
+    .textA-Obs{
+        grid-column: 2/4;
+        grid-row: 2/3;
+    
+        width: 100%;
+        max-width: 25rem;
+    
+        border-radius: 0.5rem;
+        padding: 1rem;
+        border: 1px solid gray;
+    }
+    
+    
+    
+    
+    .btn-guardar{
+
+        width: 100%;
+        max-width: 20rem;
+        padding: 1.5rem 1rem;
+        font-size: 1.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+    
+        align-self: center;
+        justify-self: center;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 }

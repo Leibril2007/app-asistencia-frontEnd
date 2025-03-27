@@ -1,7 +1,7 @@
 async function camposGrados() {
     try {
-      const response = await fetch('http://localhost:3000/grados');
-      const data = await response.json();
+      let response = await fetch('http://localhost:3000/grados');
+      let data = await response.json();
       return data;
     } catch (error) {
       console.error('Error:', error);
@@ -12,8 +12,8 @@ async function camposGrados() {
 async function consultarMaestos() {
   
   try {
-    const response = await fetch('http://localhost:3000/maestros');
-    const data = await response.json();
+    let response = await fetch('http://localhost:3000/maestros');
+    let data = await response.json();
     return data;
   } catch (error) {
     console.error('Error:', error);
@@ -24,8 +24,8 @@ async function consultarMaestos() {
 async function consultarAlumnos() {
   
   try {
-    const response = await fetch('http://localhost:3000/alumnos');
-    const data = await response.json();
+    let response = await fetch('http://localhost:3000/alumnos');
+    let data = await response.json();
     return data;
   } catch (error) {
     console.error('Error:', error);
@@ -54,6 +54,9 @@ function gradosBackend(idGradoSel) {
       });
   });
 }
+
+
+
 
 
 
