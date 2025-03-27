@@ -164,3 +164,11 @@
     font-size: 1.5rem;
     color: rgb(124, 160, 8);
 }
+.msj-fecha-alum{
+    grid-row: 3/4;
+    grid-column: 2/4;   
+    
+    text-align: start;
+    font-size: 1.5rem;
+    color: red;
+}

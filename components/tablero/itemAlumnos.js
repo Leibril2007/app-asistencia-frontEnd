@@ -87,14 +87,29 @@ function cadaAlumno(data, idGradoSel){
             valorCheck = false; 
             console.log("valor no", valorCheck);
         }
-    
-        
-        agregarDatos(idMaestro, idGradoSel, data.id, recFecha, valorCheck, recObs);
 
-        let msjHecho = document.createElement('p');
-        msjHecho.className = "msj-hecho-alum";
-        msjHecho.textContent = "Guardado con éxito";
-        divBase.appendChild(msjHecho);
+        let avFeca = document.querySelector('.msj-fecha-alum');
+        if (avFeca) {
+            avFeca.remove();          
+        }
+    
+
+        if(recFecha === ""){
+            let avFecah = document.createElement('p');
+            avFecah.className = "msj-fecha-alum";
+            avFecah.textContent = "Agrega la Fecha por favor";
+            divBase.appendChild(avFecah);
+
+        } else {            
+
+            let msjHecho = document.createElement('p');
+            msjHecho.className = "msj-hecho-alum";
+            msjHecho.textContent = "Guardado con éxito";
+            divBase.appendChild(msjHecho);
+        }
+
+        agregarDatos(idMaestro, idGradoSel, data.id, recFecha, valorCheck, recObs);
+        
 
     });
            

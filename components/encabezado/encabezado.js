@@ -1,9 +1,6 @@
 import { cargarTablero } from "../tablero/tablero.js";
 import { camposGrados } from "../tablero/consultas.js";
 import { consultarAlumnos } from "../tablero/consultas.js";
-import { idMaestro, idAlumno,recAsistencia, recObs } from "../login/login.js";
-
-import { agregarDatos } from "../tablero/funcionAsistencia.js";
 
 function consultarGrados(maestros, email){
     fetch('http://localhost:3000/grados') 
