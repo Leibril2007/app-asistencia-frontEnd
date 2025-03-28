@@ -113,13 +113,6 @@ function cadaAlumno(data, idGradoSel){
         console.log("rec", recObs);
         
 
-        if(recObs === ""){
-            recObs = document.querySelector('.textA-Obs').value;
-            console.log("observacion", recObs);
-
-        }
-
-
 
         agregarDatos(idMaestro, idGradoSel, data.id, recFecha, valorCheck, recObs);
         
