@@ -68,7 +68,7 @@ function cargarLogin(){
     let inputPass = document.createElement('input');
     inputPass.className = "inputs inp-pass";
     inputPass.placeholder = "Password";
-    inputPass.type = "password";
+    /* inputPass.type = "password"; */
     formLogin.appendChild(inputPass);
 
 
@@ -89,7 +89,7 @@ function cargarLogin(){
 
         if(maestros){
 
-            if( maestros.password === pass ){
+            if( maestros.email === pass ){
 
                 cargarDOM(maestros.nombre, maestros.email);
 
