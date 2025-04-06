@@ -14,6 +14,7 @@ async function consultarMaestos() {
   try {
     let response = await fetch('http://localhost:3000/maestros');
     let data = await response.json();
+    
     return data;
   } catch (error) {
     console.error('Error:', error);
