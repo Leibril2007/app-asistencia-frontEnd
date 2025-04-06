@@ -56,7 +56,8 @@ function cadaAlumno(data, idGradoSel){
 
 
     //MANDAR OBSERVACIONES
-    let textAObs = document.createElement('textarea');
+
+    let textAObs = document.createElement('input');
     textAObs.className = "textA-Obs";
     divBase.appendChild(textAObs);
 
@@ -69,11 +70,10 @@ function cadaAlumno(data, idGradoSel){
     divBase.appendChild(btnGuardar);
 
 
-
     btnGuardar.addEventListener("click", function() {
         let recFecha = document.querySelector('.fecha-inp').value;
         console.log("fecha verificar", recFecha);
-        let recObs = document.querySelector('.textA-Obs').value;
+        
     
         let checkBoxSi = inpSi;
         let checkBoxNo = inpNo;
@@ -87,14 +87,35 @@ function cadaAlumno(data, idGradoSel){
             valorCheck = false; 
             console.log("valor no", valorCheck);
         }
-    
-        
-        agregarDatos(idMaestro, idGradoSel, data.id, recFecha, valorCheck, recObs);
 
-        let msjHecho = document.createElement('p');
-        msjHecho.className = "msj-hecho-alum";
-        msjHecho.textContent = "Guardado con éxito";
-        divBase.appendChild(msjHecho);
+        let avFeca = document.querySelector('.msj-fecha-alum');
+        if (avFeca) {
+            avFeca.remove();          
+        }
+    
+
+        if(recFecha === ""){
+            let avFecah = document.createElement('p');
+            avFecah.className = "msj-fecha-alum";
+            avFecah.textContent = "Ingrese la fecha por favor";
+            divBase.appendChild(avFecah);
+
+        } else {            
+
+            let msjHecho = document.createElement('p');
+            msjHecho.className = "msj-hecho-alum";
+            msjHecho.textContent = "Guardado con éxito";
+            divBase.appendChild(msjHecho);
+        }
+
+
+        let recObs = textAObs.value;
+        console.log("rec", recObs);
+        
+
+
+        agregarDatos(idMaestro, idGradoSel, data.id, recFecha, valorCheck, recObs);
+        
 
     });
            
