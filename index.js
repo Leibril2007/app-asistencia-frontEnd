@@ -7,7 +7,7 @@ let DOM = document.querySelector("#root");
 function cargarDOM(maestros, email){
 
     consultarGrados(maestros, email);
-}
+}   
 
 DOM.appendChild(cargarLogin());
 

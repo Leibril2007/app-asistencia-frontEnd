@@ -89,7 +89,7 @@ function cargarLogin(){
 
         if(maestros){
 
-            if( maestros.email === pass ){
+            if( maestros.password === pass ){
 
                 cargarDOM(maestros.nombre, maestros.email);
 
@@ -97,8 +97,6 @@ function cargarLogin(){
                 if(!secLogin.classList.contains("ocultar")){
                     secLogin.classList.add("ocultar");
                 }
-
-                /* MANDAR MAESTRO */
 
                 idMaestro =  maestros.id;
                 console.log("maestro", idMaestro);
@@ -121,7 +119,8 @@ function cargarLogin(){
             errorPass.className = "error";
             formLogin.appendChild(errorPass);
 
-        }     
+        }   
+ 
 
     })
 
