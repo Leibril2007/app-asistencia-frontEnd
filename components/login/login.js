@@ -80,47 +80,58 @@ function cargarLogin(){
 
     btnLogin.addEventListener("click", async ()=>{
 
-        let datosMaestros = await consultarMaestos();
 
-        let nombreOemail = inputUserEmail.value;
-        let pass = inputPass.value;
+          document.querySelectorAll(".error").forEach(e => e.remove());
+          let nombreOemail = inputUserEmail.value;
+          let pass = inputPass.value;
+        
+          try {
+            const response = await fetch('http://localhost:3000/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                email: nombreOemail,
+                password: pass
+              })
+            });
+        
+            const data = await response.json();
+        
+            if (!response.ok) {
 
-        let maestros = datosMaestros.find(maestros => maestros.nombre === nombreOemail || maestros.email === nombreOemail);
-
-        if(maestros){
-
-            if( maestros.password === pass ){
-
-                cargarDOM(maestros.nombre, maestros.email);
-
-
-                if(!secLogin.classList.contains("ocultar")){
-                    secLogin.classList.add("ocultar");
-                }
-
-                idMaestro =  maestros.id;
-                console.log("maestro", idMaestro);
-
-                agregarDatos(idMaestro, idGrado, idAlumno, recFecha,recAsistencia, recObs);
-
-
-            } else {
-                let errorPass = document.createElement('p');
-                errorPass.className = "error eContraseña";
-                errorPass.textContent = "Contraseña incorrecta";
-
-                formLogin.appendChild(errorPass);
+              let errorMsg = document.createElement('p');
+              errorMsg.className = "error";
+              errorMsg.textContent = data.message || "Error al iniciar sesión";
+              formLogin.appendChild(errorMsg);
+              return;
             }
+        
+            
+            const { id, nombre, email } = data.user;
+            console.log("consEmail",id);
+        
+            cargarDOM(nombre, email);
+        
+            if (!secLogin.classList.contains("ocultar")) {
+              secLogin.classList.add("ocultar");
+            }
+        
+            idMaestro = id;
+            console.log("maestro", idMaestro);
+        
+            agregarDatos(idMaestro, idGrado, idAlumno, recFecha, recAsistencia, recObs);
+        
+          } catch (error) {
+            console.error("Error en login:", error);
+        
+            let errorMsg = document.createElement('p');
+            errorMsg.className = "error";
+            errorMsg.textContent = "Error al conectar con el servidor";
+            formLogin.appendChild(errorMsg);
+          }
 
-        }else{
-
-            let errorPass = document.createElement('p');
-            errorPass.textContent = "Usuario o contraseña incorrectos";
-            errorPass.className = "error";
-            formLogin.appendChild(errorPass);
-
-        }   
- 
 
     })
 

@@ -5,7 +5,7 @@ import { consultarGrados } from "./components/encabezado/encabezado.js";
 let DOM = document.querySelector("#root");
 
 function cargarDOM(maestros, email){
-
+    
     consultarGrados(maestros, email);
 }   
 

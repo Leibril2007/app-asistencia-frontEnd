@@ -17,6 +17,7 @@ function cargarEncabezadoDOM(data, maestros, email){
 
 
 function cargarEncabezado(dataGrados, maestros, email){
+    console.log("em",email);
 
     let header = document.createElement('header');
     header.className = "header";
